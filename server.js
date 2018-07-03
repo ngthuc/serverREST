@@ -10,7 +10,7 @@ app.use(bodyparser.json());
 
 app.use('/sinhvien',routes);
 
-var server = app.listen(3000, function() {
+var server = app.listen(10110, function() {
   console.log('Server listening on port ' + server.address().port);
 });
 
