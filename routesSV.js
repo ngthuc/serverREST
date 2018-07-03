@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-// var Transaction = require('./Models/Transaction');
 var SinhVien = require('./Models/SinhVien');
 router.get('/:id?',function(req,res,next){
     if(req.params.id){
