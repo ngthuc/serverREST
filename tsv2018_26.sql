@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th7 03, 2018 lúc 05:49 AM
+-- Thời gian đã tạo: Th7 03, 2018 lúc 11:03 AM
 -- Phiên bản máy phục vụ: 8.0.11
 -- Phiên bản PHP: 7.0.30-0ubuntu0.16.04.1
 
@@ -84,7 +84,11 @@ CREATE TABLE `payments` (
 INSERT INTO `payments` (`date_time`, `id_pay_member`, `id_collect_member`, `amountofmoney`, `type_payment`) VALUES
 ('2018-07-03 03:47:45', 'B1400702', '002555', 20000, '2'),
 ('2018-07-03 03:48:36', 'B1400702', '002555', 20000, '2'),
-('2018-07-03 03:48:37', 'B1400702', '002555', 20000, '2');
+('2018-07-03 03:48:37', 'B1400702', '002555', 20000, '2'),
+('2018-07-03 08:52:16', '002555', 'B1400702', 20000, '2'),
+('2018-07-03 08:54:52', '002555', 'B1400702', 20000, '1'),
+('2018-07-03 09:00:49', '002555', 'B1400702', 20000, '1'),
+('2018-07-03 09:01:53', '002555', 'B1400702', 100000, '1');
 
 -- --------------------------------------------------------
 
@@ -113,7 +117,8 @@ INSERT INTO `sinhvien` (`id`, `name`, `class`, `dob`) VALUES
 (8, 'Trần Đăng Tiến', 'DI1496A1', '1996-01-01 00:00:00'),
 (9, 'Võ Thành Trung', 'DI1496A1', '1996-01-01 00:00:00'),
 (10, 'Trương Vũ Trường', 'DI1496A1', '1996-01-01 00:00:00'),
-(11, 'Vũ Trúc Quân', 'DI1496A1', '1995-03-26 00:00:00');
+(11, 'Vũ Trúc Quân', 'DI1496A1', '1995-03-26 00:00:00'),
+(12, 'Vũ Trúc Quân', 'DI1496A1', '1995-03-26 00:00:00');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -154,7 +159,7 @@ ALTER TABLE `sinhvien`
 -- AUTO_INCREMENT cho bảng `sinhvien`
 --
 ALTER TABLE `sinhvien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

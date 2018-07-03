@@ -20,13 +20,13 @@ var Transaction={
 		return db.query("SELECT * FROM payments",callback);
 	},
 	getTransactionById:function(id,callback){
-		return db.query("SELECT * FROM payments WHERE id_pay_member=? OR id_collect_member=?",[id],callback);
+		return db.query("SELECT * FROM payments WHERE id_pay_member=? OR id_collect_member=?",[id,id],callback);
 	},
 	checkServiceStaff:function(service,callback){
-		return db.query("SELECT id_member as id_service FROM cards JOIN members ON cards.id_member = members.id_member WHERE id_Card = '?' AND isService = '1'",[service.id_pay_member],callback);
+		return db.query("SELECT * FROM cards JOIN members ON cards.id_member = members.id_member WHERE cards.id_Card = ? AND members.isService = '1'",[service],callback);
 	},
 	checkUser:function(card,callback){
-		return db.query("SELECT id_member as id_service FROM cards JOIN members ON cards.id_member = members.id_member WHERE id_Card = '?'",[card.id_collect_member],callback);
+		return db.query("SELECT * FROM cards JOIN members ON cards.id_member = members.id_member WHERE id_Card = ?",[card],callback);
 	},
 	// addTransactionTypeAdd:function(transaction,callback){
 	// 	return db.query("INSERT INTO payments(id_pay_member,id_collect_member,amountofmoney,type_payment) VALUES(?,?,?,'1')",[transaction.id_pay_member,transaction.id_collect_member,transaction.amountofmoney],callback);
@@ -37,8 +37,8 @@ var Transaction={
 	// addTransactionTypeAdd:function(transaction,callback){
 	// 	return db.query("INSERT INTO payments(id_pay_member,id_collect_member,amountofmoney,type_payment) VALUES(?,?,?,'1')",[transaction.id_pay_member,transaction.id_collect_member,transaction.amountofmoney],callback);
 	// },
-	addTransactionTypeSubtract:function(transaction,callback){
-		return db.query("INSERT INTO payments(id_pay_member,id_collect_member,amountofmoney,type_payment) VALUES(?,?,?,'2')",[transaction.id_pay_member,transaction.id_collect_member,transaction.amountofmoney],callback);
+	addTransaction:function(transaction,callback){
+		return db.query("INSERT INTO payments(id_pay_member,id_collect_member,amountofmoney,type_payment) VALUES(?,?,?,?)",[transaction.id_pay_member,transaction.id_collect_member,transaction.amountofmoney,transaction.type_payment],callback);
 	}
 };
  module.exports=Transaction;
