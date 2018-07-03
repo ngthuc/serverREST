@@ -11,11 +11,6 @@ create table workplaces(
 	description varchar(100)
 	);
 
-
-	INSERT INTO `members_t`(`id_member`, `balance`, `isSV`) VALUES ('B1400702',50000,'0');
-	INSERT INTO `members_t`(`id_member`, `balance`, `isSV`) VALUES ('002555',100000,'1');
-	INSERT INTO `members_t`(`id_member`, `balance`, `isSV`) VALUES ('000042',50000,'0');
-
 create table members(
 	id_member varchar(8) primary key,
 	password varchar(50) not null,
