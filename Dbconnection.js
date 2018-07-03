@@ -5,10 +5,10 @@ var connection=mysql.createPool({
  // user:'root',
  // password:'mysql',
  // database:'quickpayment2'
- host:'localhost',
- user:'root',
- password:'mysql',
- database:'sinhvien'
+ host:'db4free.net',
+ user:'ngthuc',
+ password:'tsv2018_26',
+ database:'tsv2018_26'
 
 });
 module.exports=connection;
