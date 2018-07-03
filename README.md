@@ -12,12 +12,12 @@ Testing TSV2018-26
 * INSERT INTO payments (id_pay_member, id_collect_member, amountofmoney, type_payment) VALUES ('id_service','id_user',money,add/subtract);
 
 ## Example
-URI: http://172.18.143.7:10110/transaction/add
-Client: Postman
-JSON:
-* Request: {"id_pay_member":"0070151006","id_collect_member":"0070158406","amountofmoney":100000}
-* Response:
-{
+### URI: http://172.18.143.7:10110/transaction/add
+### Client: Postman
+### JSON Request: 
+* {"id_pay_member":"0070151006","id_collect_member":"0070158406","amountofmoney":100000}
+### JSON Response:
+* {
     "id_pay_member": "002555",
     "id_collect_member": "B1400702",
     "amountofmoney": "100000",
