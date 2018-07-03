@@ -2,6 +2,25 @@ var express = require('express');
 var router = express.Router();
 var SinhVien = require('./Models/SinhVien');
 router.get('/:id?',function(req,res,next){
+    // if(req.params.id){
+    //     Transaction.getTransactionById(req.params.id,function(err,rows){
+    //         if(err){
+    //             res.json(err);
+    //         }
+    //         else{
+    //             res.json(rows);
+    //         }
+    //     });
+    // }else{
+    //     Transaction.getAllTransaction(function(err,rows){
+    //         if(err){
+    //             res.json(err);
+    //         } else {
+    //             res.json(rows);
+    //         }
+    //
+    //     });
+    // }
     if(req.params.id){
         SinhVien.getSinhVienById(req.params.id,function(err,rows){
             if(err){
@@ -24,6 +43,13 @@ router.get('/:id?',function(req,res,next){
 });
 
 router.post('/',function(req,res,next){
+    // Transaction.addTransaction(req.body,function(err,count){
+    //     if(err){
+    //         res.json(err);
+    //     } else{
+    //         res.json(req.body);
+    //     }
+    // });
     SinhVien.addSV(req.body,function(err,count){
         if(err){
             res.json(err);
@@ -34,6 +60,13 @@ router.post('/',function(req,res,next){
 });
 
 router.delete('/:id',function(req,res,next){
+    // Transaction.deleteTransaction(req.params.id,function(err,count){
+    //     if(err){
+    //         res.json(err);
+    //     } else{
+    //       res.json(count);
+    //     }
+    // });
     SinhVien.deleteSV(req.params.id,function(err,count){
         if(err){
             res.json(err);

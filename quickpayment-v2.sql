@@ -5,15 +5,17 @@ create table usergroups(
 	ID_UG varchar(8) primary key,
 	Name_UG varchar(50)
 	);
-	
+
 create table workplaces(
 	ID_WP varchar(8) primary key,
 	description varchar(100)
 	);
 
 
+	INSERT INTO `members_t`(`id_member`, `balance`, `isSV`) VALUES ('B1400702',50000,'0');
+	INSERT INTO `members_t`(`id_member`, `balance`, `isSV`) VALUES ('002555',100000,'1');
+	INSERT INTO `members_t`(`id_member`, `balance`, `isSV`) VALUES ('000042',50000,'0');
 
-	
 create table members(
 	id_member varchar(8) primary key,
 	password varchar(50) not null,
@@ -27,7 +29,7 @@ create table members(
 	foreign key (ID_WP) references workplaces(ID_WP)  on update cascade,
 	foreign key(ID_UG) references usergroups(ID_UG) on update cascade
 	);
-    
+
     create table payments(
 		date_time timestamp default current_timestamp,
 		id_pay_member varchar(8) not null,
