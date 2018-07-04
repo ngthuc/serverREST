@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var SinhVien = require('./Models/SinhVien');
+var SinhVien = require('../Models/SinhVien');
 router.get('/:id?',function(req,res,next){
     if(req.params.id){
         SinhVien.getSinhVienById(req.params.id,function(err,rows){
