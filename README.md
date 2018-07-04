@@ -37,3 +37,7 @@ Testing TSV2018-26
   type_payment: '+' }
 * Alert: Update thanh cong: nguoi nhan tien
 * Alert: Update thanh cong: nguoi thanh toan
+
+# References
+* Client POSTMAN: https://www.getpostman.com/
+* Database online: http://db4free.net/
