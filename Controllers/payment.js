@@ -34,8 +34,13 @@ router.get('/:id?',function(req,res,next){
 
 router.post('/add',function(req,res,next){
   var received = req.body;
+
+  if(received){
+    console.log('Da nhan');
+  }
+
   var amountofmoney = parseInt(received.amountofmoney);
-  console.log(received);
+  var type_payment = '-';
 
   Transaction.checkUser(received.id_pay_member,function(err,rows){
     if(err){
@@ -63,18 +68,11 @@ router.post('/add',function(req,res,next){
                         balance_service = rows[0]['balance'];
                         balance_service = parseInt(balance_service);
                         if(balance_service >= 0){
-                          if(received.type_payment === '+'){
-                            balance_service_after_transaction = balance_service - amountofmoney;
-                            balance_user_after_transaction = balance_user + amountofmoney;
-                          } else if(received.type_payment === '-'){
-                            balance_service_after_transaction = balance_service + amountofmoney;
-                            balance_user_after_transaction = balance_user - amountofmoney;
-                          } else{
-                            res.json({"message":"Khong ton tai kieu thanh toan!"});
-                          }
+                          balance_service_after_transaction = balance_service + amountofmoney;
+                          balance_user_after_transaction = balance_user - amountofmoney;
 
                           if(balance_service_after_transaction && balance_user_after_transaction) {
-                            var pay = '{"id_pay_member":"' + id_user + '","id_collect_member":"' + id_service + '","amountofmoney":"' + amountofmoney + '","type_payment":"' + received.type_payment + '"}';
+                            var pay = '{"id_pay_member":"' + id_user + '","id_collect_member":"' + id_service + '","amountofmoney":"' + amountofmoney + '","type_payment":"' + type_payment + '"}';
                             datapay = JSON.parse(pay);
                             Transaction.addTransaction(datapay,function(err,rows){
                               if(err){

@@ -16,7 +16,7 @@ Testing TSV2018-26
 ### URI: http://ipaddress:10110/transaction/add
 ### Client: Postman
 ### JSON Request:
-* {"id_pay_member":"0070158406","id_collect_member":"0070151006","amountofmoney":20000,"type_payment":"+"}
+* {"id_pay_member":"0070158406","id_collect_member":"0070151006","amountofmoney":20000}
 ### JSON Response:
 * {
     "id_pay_member": "B1400702",
@@ -27,16 +27,14 @@ Testing TSV2018-26
 ### Commanpromt Response:
 * F:\Dropbox\NodeJS\serverREST>node server.js
 * Server listening on port 10110
-* Received: { id_pay_member: '0070158406',
-  id_collect_member: '0070151006',
-  amountofmoney: 20000,
-  type_payment: '+' }
-* Result: { id_pay_member: 'B1400702',
+* Connected!
+* Da nhan
+* { id_pay_member: 'B1400702',
   id_collect_member: '002555',
   amountofmoney: '20000',
-  type_payment: '+' }
-* Alert: Update thanh cong: nguoi nhan tien
-* Alert: Update thanh cong: nguoi thanh toan
+  type_payment: '-' }
+* Update thanh cong: nguoi nhan tien
+* Update thanh cong: nguoi thanh toan
 
 # References
 * Client POSTMAN: https://www.getpostman.com/
