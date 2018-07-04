@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `cards` (
   `id_Card` varchar(12) NOT NULL,
   `id_member` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `cards`
@@ -52,7 +52,7 @@ CREATE TABLE `members` (
   `id_member` varchar(8) NOT NULL,
   `balance` int(11) NOT NULL DEFAULT '0',
   `isService` char(1) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `members`
@@ -75,7 +75,7 @@ CREATE TABLE `payments` (
   `id_collect_member` varchar(8) NOT NULL,
   `amountofmoney` int(11) NOT NULL,
   `type_payment` varchar(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `payments`
@@ -98,10 +98,10 @@ INSERT INTO `payments` (`date_time`, `id_pay_member`, `id_collect_member`, `amou
 
 CREATE TABLE `sinhvien` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
-  `class` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `class` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `dob` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `sinhvien`

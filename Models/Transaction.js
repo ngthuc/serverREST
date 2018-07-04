@@ -28,17 +28,14 @@ var Transaction={
 	checkUser:function(card,callback){
 		return db.query("SELECT * FROM cards JOIN members ON cards.id_member = members.id_member WHERE id_Card = ?",[card],callback);
 	},
-	// addTransactionTypeAdd:function(transaction,callback){
-	// 	return db.query("INSERT INTO payments(id_pay_member,id_collect_member,amountofmoney,type_payment) VALUES(?,?,?,'1')",[transaction.id_pay_member,transaction.id_collect_member,transaction.amountofmoney],callback);
-	// },
-	// addTransactionTypeSubtract:function(transaction,callback){
-	// 	return db.query("INSERT INTO payments(id_pay_member,id_collect_member,amountofmoney,type_payment) VALUES(?,?,?,'2')",[transaction.id_pay_member,transaction.id_collect_member,transaction.amountofmoney],callback);
-	// }
-	// addTransactionTypeAdd:function(transaction,callback){
-	// 	return db.query("INSERT INTO payments(id_pay_member,id_collect_member,amountofmoney,type_payment) VALUES(?,?,?,'1')",[transaction.id_pay_member,transaction.id_collect_member,transaction.amountofmoney],callback);
-	// },
+	getBalance:function(member,callback){
+		return db.query("SELECT * FROM members WHERE id_member = ?",[member],callback);
+	},
 	addTransaction:function(transaction,callback){
 		return db.query("INSERT INTO payments(id_pay_member,id_collect_member,amountofmoney,type_payment) VALUES(?,?,?,?)",[transaction.id_pay_member,transaction.id_collect_member,transaction.amountofmoney,transaction.type_payment],callback);
+	},
+	updateBalance:function(id,balance,callback){
+		return db.query("UPDATE members SET balance = ? WHERE id_member = ?",[balance,id],callback);
 	}
 };
  module.exports=Transaction;

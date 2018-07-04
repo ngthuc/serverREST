@@ -12,14 +12,28 @@ Testing TSV2018-26
 * INSERT INTO payments (id_pay_member, id_collect_member, amountofmoney, type_payment) VALUES ('id_service','id_user',money,add/subtract);
 
 ## Example
-### URI: http://172.18.143.7:10110/transaction/add
+### Requiment: User B1400702 add 20000VND from service 002555
+### URI: http://ipaddress:10110/transaction/add
 ### Client: Postman
-### JSON Request: 
-* {"id_pay_member":"0070151006","id_collect_member":"0070158406","amountofmoney":100000}
+### JSON Request:
+* {"id_pay_member":"0070158406","id_collect_member":"0070151006","amountofmoney":20000,"type_payment":"+"}
 ### JSON Response:
 * {
-    "id_pay_member": "002555",
-    "id_collect_member": "B1400702",
-    "amountofmoney": "100000",
-    "type_payment": "1"
+    "id_pay_member": "B1400702",
+    "id_collect_member": "002555",
+    "amountofmoney": "20000",
+    "type_payment": "+"
 }
+### Commanpromt Response:
+* F:\Dropbox\NodeJS\serverREST>node server.js
+* Server listening on port 10110
+* Received: { id_pay_member: '0070158406',
+  id_collect_member: '0070151006',
+  amountofmoney: 20000,
+  type_payment: '+' }
+* Result: { id_pay_member: 'B1400702',
+  id_collect_member: '002555',
+  amountofmoney: '20000',
+  type_payment: '+' }
+* Alert: Update thanh cong: nguoi nhan tien
+* Alert: Update thanh cong: nguoi thanh toan
