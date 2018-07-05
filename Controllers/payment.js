@@ -40,7 +40,7 @@ router.post('/add',function(req,res,next){
   }
 
   var amountofmoney = parseInt(received.amountofmoney);
-  var type_payment = '-';
+  var type_payment = '-'; // default subtract
 
   Transaction.checkUser(received.id_pay_member,function(err,rows){
     if(err){
@@ -67,38 +67,36 @@ router.post('/add',function(req,res,next){
                       } else{
                         balance_service = rows[0]['balance'];
                         balance_service = parseInt(balance_service);
-                        if(balance_service >= 0){
-                          balance_service_after_transaction = balance_service + amountofmoney;
-                          balance_user_after_transaction = balance_user - amountofmoney;
 
-                          if(balance_service_after_transaction && balance_user_after_transaction) {
-                            var pay = '{"id_pay_member":"' + id_user + '","id_collect_member":"' + id_service + '","amountofmoney":"' + amountofmoney + '","type_payment":"' + type_payment + '"}';
-                            datapay = JSON.parse(pay);
-                            Transaction.addTransaction(datapay,function(err,rows){
-                              if(err){
-                                res.json(err);
-                              } else{
-                                res.json(datapay);
-                                console.log(datapay);
-                                Transaction.updateBalance(id_service,balance_service_after_transaction,function(err,rows){
-                                  if(err){
-                                    res.json(err);
-                                  } else{
-                                    console.log('Update thanh cong: nguoi nhan tien');
-                                  }
-                                });
-                                Transaction.updateBalance(id_user,balance_user_after_transaction,function(err,rows){
-                                  if(err){
-                                    res.json(err);
-                                  } else{
-                                    console.log('Update thanh cong: nguoi thanh toan');
-                                  }
-                                });
-                              }
-                            })
-                          }
-                        } else{
-                          res.json({"message":"Co loi xay ra: So du be hon 0! Lien he quan tri vien de kiem tra"});
+                        // balance_service_after_transaction = balance_service + amountofmoney;
+                        balance_user_after_transaction = balance_user - amountofmoney;
+
+                        // if(balance_service_after_transaction && balance_user_after_transaction) {
+                        if(balance_user_after_transaction) {
+                          var pay = '{"id_pay_member":"' + id_user + '","id_collect_member":"' + id_service + '","amountofmoney":"' + amountofmoney + '","type_payment":"' + type_payment + '"}';
+                          datapay = JSON.parse(pay);
+                          Transaction.addTransaction(datapay,function(err,rows){
+                            if(err){
+                              res.json(err);
+                            } else{
+                              res.json(datapay);
+                              console.log(datapay);
+                              // Transaction.updateBalance(id_service,balance_service_after_transaction,function(err,rows){
+                              //   if(err){
+                              //     res.json(err);
+                              //   } else{
+                              //     console.log('Update thanh cong: nguoi nhan tien');
+                              //   }
+                              // });
+                              Transaction.updateBalance(id_user,balance_user_after_transaction,function(err,rows){
+                                if(err){
+                                  res.json(err);
+                                } else{
+                                  console.log('Update thanh cong: nguoi thanh toan');
+                                }
+                              });
+                            }
+                          })
                         }
                       }
                     });
