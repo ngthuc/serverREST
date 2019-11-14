@@ -1,1 +1,4 @@
 theme: jekyll-theme-leap-day
+title: 'REST Server Sample'
+description: 'Sample Code for REST API Server.'
+show_downloads: true
